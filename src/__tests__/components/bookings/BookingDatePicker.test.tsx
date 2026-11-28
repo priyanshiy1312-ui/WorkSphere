@@ -1,88 +1,38 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { BookingDatePicker } from '@/components/bookings/BookingDatePicker';
-import { getDatePreset } from '@/lib/validations/dateFilter';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { addCalendarDays, BookingDatePicker, buildMonthCalendarDays, formatCalendarTuple, parseToCalendarTuple, tupleToNoonUtcDate } from '@/components/bookings/BookingDatePicker';
+describe('BookingDatePicker DST boundary normalization', () => { it('anchors calendar tuples at noon UTC and steps across US spring-forward and fall-back DST boundaries without shifting days', () => { const beforeSpring = parseToCalendarTuple('2026-03-07', 'America/New_York'); const springDstDay = addCalendarDays(beforeSpring, 1); const afterSpring = addCalendarDays(springDstDay, 1); expect(formatCalendarTuple(springDstDay)).toBe('2026-03-08'); expect(formatCalendarTuple(afterSpring)).toBe('2026-03-09'); expect(tupleToNoonUtcDate(springDstDay).toISOString()).toBe('2026-03-08T12:00:00.000Z'); const beforeFall = parseToCalendarTuple('2026-10-31', 'America/New_York'); const fallDstDay = addCalendarDays(beforeFall, 1); const afterFall = addCalendarDays(fallDstDay, 1); expect(formatCalendarTuple(fallDstDay)).toBe('2026-11-01'); expect(formatCalendarTuple(afterFall)).toBe('2026-11-02'); expect(buildMonthCalendarDays(2026, 3)).toHaveLength(31); expect(buildMonthCalendarDays(2026, 11)).toHaveLength(30); }); it('renders and selects exact Y-M-D dates across DST boundaries without off-by-one shifts', () => { const handleChange = jest.fn(); render(<BookingDatePicker value="2026-03-08" monthDate="2026-03-01" timeZone="America/Los_Angeles" onChange={handleChange} />); const dstButton = screen.getByRole('button', { name: '8' }); expect(dstButton).toHaveAttribute('data-date', '2026-03-08'); expect(dstButton).toHaveAttribute('aria-pressed', 'true'); const nextDayButton = screen.getByRole('button', { name: '9' }); fireEvent.click(nextDayButton); expect(handleChange).toHaveBeenCalledWith('2026-03-09', { year: 2026, month: 3, day: 9 }); }); });
+describe('BookingDatePicker today shortcut', () => {
+  afterEach(() => jest.useRealTimers());
 
-describe('BookingDatePicker presets (#9755)', () => {
-  it('renders Today, Tomorrow, and This Weekend preset buttons with accessible attributes', () => {
-    render(<BookingDatePicker />);
-
-    const todayBtn = screen.getByTestId('date-preset-today');
-    const tomorrowBtn = screen.getByTestId('date-preset-tomorrow');
-    const weekendBtn = screen.getByTestId('date-preset-weekend');
-
-    expect(todayBtn).toBeInTheDocument();
-    expect(tomorrowBtn).toBeInTheDocument();
-    expect(weekendBtn).toBeInTheDocument();
-
-    expect(todayBtn).toHaveAttribute('aria-pressed', 'false');
-    expect(tomorrowBtn).toHaveAttribute('aria-pressed', 'false');
-    expect(weekendBtn).toHaveAttribute('aria-pressed', 'false');
+  it('navigates to and selects today using the configured timezone', () => {
+    jest.useFakeTimers().setSystemTime(new Date('2026-01-01T00:30:00.000Z'));
+    const handleChange = jest.fn();
+    render(<BookingDatePicker monthDate="2025-12-01" timeZone="America/Los_Angeles" onChange={handleChange} />);
+    const picker = screen.getByTestId('booking-date-picker');
+    picker.focus();
+    fireEvent.keyDown(picker, { key: 'T' });
+    expect(picker).toHaveAttribute('data-month', '2025-12');
+    expect(handleChange).toHaveBeenCalledWith('2025-12-31', { year: 2025, month: 12, day: 31 });
   });
 
-  it('updates date and triggers callbacks when clicking Today', () => {
-    const onDateChange = jest.fn();
-    const onChange = jest.fn();
-    render(<BookingDatePicker onDateChange={onDateChange} onChange={onChange} />);
-
-    const todayBtn = screen.getByTestId('date-preset-today');
-    fireEvent.click(todayBtn);
-
-    const { startDate, endDate } = getDatePreset('today');
-    expect(todayBtn).toHaveAttribute('aria-pressed', 'true');
-    expect(todayBtn).toHaveClass('bg-violet-600');
-    expect(onDateChange).toHaveBeenCalledWith(startDate);
-    expect(onChange).toHaveBeenCalledWith({ startDate, endDate });
+  it('does not fire outside the picker or from editable controls', () => {
+    jest.useFakeTimers().setSystemTime(new Date('2026-06-15T12:00:00.000Z'));
+    const handleChange = jest.fn();
+    render(<><input aria-label="outside" /><BookingDatePicker monthDate="2026-01-01" onChange={handleChange} /></>);
+    fireEvent.keyDown(screen.getByLabelText('outside'), { key: 't' });
+    expect(handleChange).not.toHaveBeenCalled();
+    const picker = screen.getByTestId('booking-date-picker');
+    const input = document.createElement('input');
+    picker.appendChild(input);
+    fireEvent.keyDown(input, { key: 't' });
+    expect(handleChange).not.toHaveBeenCalled();
   });
 
-  it('updates date and triggers callbacks when clicking Tomorrow', () => {
-    const onDateChange = jest.fn();
-    render(<BookingDatePicker onDateChange={onDateChange} />);
-
-    const tomorrowBtn = screen.getByTestId('date-preset-tomorrow');
-    fireEvent.click(tomorrowBtn);
-
-    const { startDate } = getDatePreset('tomorrow');
-    expect(tomorrowBtn).toHaveAttribute('aria-pressed', 'true');
-    expect(tomorrowBtn).toHaveClass('bg-violet-600');
-    expect(onDateChange).toHaveBeenCalledWith(startDate);
-  });
-
-  it('updates date and triggers callbacks when clicking This Weekend', () => {
-    const onDateChange = jest.fn();
-    const onChange = jest.fn();
-    render(<BookingDatePicker onDateChange={onDateChange} onChange={onChange} />);
-
-    const weekendBtn = screen.getByTestId('date-preset-weekend');
-    fireEvent.click(weekendBtn);
-
-    const { startDate, endDate } = getDatePreset('weekend');
-    expect(weekendBtn).toHaveAttribute('aria-pressed', 'true');
-    expect(weekendBtn).toHaveClass('bg-violet-600');
-    expect(onDateChange).toHaveBeenCalledWith(startDate);
-    expect(onChange).toHaveBeenCalledWith({ startDate, endDate });
-  });
-
-  it('clears active preset when a non-matching manual date is input', () => {
-    render(<BookingDatePicker />);
-
-    const todayBtn = screen.getByTestId('date-preset-today');
-    fireEvent.click(todayBtn);
-    expect(todayBtn).toHaveAttribute('aria-pressed', 'true');
-
-    const input = screen.getByLabelText('Date') as HTMLInputElement;
-    fireEvent.change(input, { target: { value: '2099-01-01' } });
-
-    expect(todayBtn).toHaveAttribute('aria-pressed', 'false');
-    expect(todayBtn).not.toHaveClass('bg-violet-600');
-  });
-
-  it('disables buttons when disabled prop is true', () => {
-    render(<BookingDatePicker disabled />);
-
-    expect(screen.getByTestId('date-preset-today')).toBeDisabled();
-    expect(screen.getByTestId('date-preset-tomorrow')).toBeDisabled();
-    expect(screen.getByTestId('date-preset-weekend')).toBeDisabled();
-    expect(screen.getByLabelText('Date')).toBeDisabled();
+  it('leaves existing date navigation unchanged', () => {
+    const handleChange = jest.fn();
+    render(<BookingDatePicker monthDate="2026-06-01" onChange={handleChange} />);
+    fireEvent.click(screen.getByRole('button', { name: '15' }));
+    expect(handleChange).toHaveBeenCalledWith('2026-06-15', { year: 2026, month: 6, day: 15 });
   });
 });

@@ -33,7 +33,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
-[![Contributors](https://img.shields.io/badge/Contributors-146%20Community%20Rockstars-orange?style=flat-square&logo=github)](https://github.com/SatyamPandey-07/WorkSphere/graphs/contributors)
+[![Contributors](https://img.shields.io/badge/Contributors-149%20Community%20Rockstars-orange?style=flat-square&logo=github)](https://github.com/SatyamPandey-07/WorkSphere/graphs/contributors)
 [![ECSoC 2026](https://img.shields.io/badge/ECSoC-2026-FFA500?style=flat-square)](https://github.com/SatyamPandey-07/WorkSphere)
 [![OSCI 2026](https://img.shields.io/badge/OSCI-2026-blue?style=flat-square)](https://github.com/SatyamPandey-07/WorkSphere)
 [![WOCS 2026](https://img.shields.io/badge/WOCS-2026-00B4D8?style=flat-square)](https://woc.codesocial.tech)
@@ -51,7 +51,7 @@
   <a href="#-features"><b>✨ Features</b></a> •
   <a href="#-architecture"><b>🏗️ Architecture</b></a> •
   <a href="#-quickstart"><b>⚡ Quickstart</b></a> •
-  <a href="#-contributors-146-active-rockstars"><b>👥 Contributors (146)</b></a> •
+  <a href="#-contributors-149-active-rockstars"><b>👥 Contributors (149)</b></a> •
   <a href="https://github.com/SatyamPandey-07/WorkSphere/issues"><b>🐛 Report Issue</b></a>
 </p>
 
@@ -74,9 +74,9 @@
 
 ---
 
-### 🚀 Contributors (146 Active Rockstars)
+### 🚀 Contributors (149 Active Rockstars)
 
-A massive thank you to all **146 brilliant contributors and bots** building WorkSphere! 🌟
+A massive thank you to all **149 brilliant contributors and bots** building WorkSphere! 🌟
 
 <table width="100%">
   <tr>
@@ -1003,6 +1003,26 @@ A massive thank you to all **146 brilliant contributors and bots** building Work
       </a>
     </td>
   </tr>
+  <tr>
+    <td align="center" width="14.28%">
+      <a href="https://github.com/priyanshiy1312-ui">
+        <img src="https://avatars.githubusercontent.com/u/285353667?v=4" width="55px;" height="55px;" alt="priyanshiy1312-ui" style="border-radius: 50%; object-fit: cover;"/><br />
+        <sub><b>priyanshiy1312-ui</b></sub>
+      </a>
+    </td>
+    <td align="center" width="14.28%">
+      <a href="https://github.com/RitikaDevi-12">
+        <img src="https://avatars.githubusercontent.com/u/306446453?v=4" width="55px;" height="55px;" alt="RitikaDevi-12" style="border-radius: 50%; object-fit: cover;"/><br />
+        <sub><b>RitikaDevi-12</b></sub>
+      </a>
+    </td>
+    <td align="center" width="14.28%">
+      <a href="https://github.com/jerittajancy08-eng">
+        <img src="https://avatars.githubusercontent.com/u/228553216?v=4" width="55px;" height="55px;" alt="jerittajancy08-eng" style="border-radius: 50%; object-fit: cover;"/><br />
+        <sub><b>jerittajancy08-eng</b></sub>
+      </a>
+    </td>
+  </tr>
 </table>
 
 ---
@@ -1040,6 +1060,60 @@ A massive thank you to all **146 brilliant contributors and bots** building Work
 ## ✨ Features
 
 ### ⚡ Cutting-Edge Platform & Telemetry Innovations (NEW)
+
+- **Dynamic Isochrone Walking Polygons**: Real-time 5/10/15-minute walking distance isochrone boundaries with PostGIS spatial integration and travel-time contour rendering (`src/lib/routing/ecoRoutingEngine.ts`).
+- **Real-Time Timezone-Aware Venue Opening Status**: Live opening status badges calculating venue open, closed, and closing-soon states according to the venue's local timezone rules (`src/lib/venues/hours.ts`).
+- **WiFi Ping Jitter & Stability Metrics**: Real-time packet variance and stability gauge tracking network jitter and latency spikes on nomadic connections (`src/lib/wifi/jitter.ts`).
+- **Collaborative Image Upload Preview Modal**: Pre-upload thumbnail inspection dialog with rotation, aspect-ratio cropping, and byte size estimation for remote workspaces (`src/components/chat/ImageUploadPreviewModal.tsx`).
+- **Hexagonal Venue Spatial Clustering**: High-performance H3/hexagonal geospatial clustering for dense urban workspace maps (`src/lib/geospatial/spatialVenueClusterer.ts`).
+- **High-Contrast Accessibility Mode**: System-wide WCAG AAA high-contrast theme toggle accessible via footer controls and settings dashboard with dynamic CSS variable overrides (`src/components/HighContrastToggle.tsx`).
+- **Lightning WiFi Filter & Gigabit Verified Badge**: Dynamic 1Gbps+ network performance filter and verified throughput badge indicator for hyper-fast nomadic work hubs (`src/components/venues/VenueFilterBar.tsx`, `src/components/VenueCard.tsx`).
+- **Multi-Layer Web Audio Soundscape Mixer**: Immersive ambient sound generator with smooth crossfading across binaural brown noise, cafe chatter, and rain layers (`src/components/audio/AmbientSoundGenerator.tsx`).
+- **Administrative Audit Log Streaming Exporter**: Real-time streaming CSV and PDF audit export engine for workspace administrators with chunked memory buffering (`src/app/api/admin/venues/[venueId]/export/route.ts`, `src/lib/export/auditExporter.ts`).
+- **Schnorr Threshold Signature Aggregation**: Cryptographic multi-party signing module validating non-malleable secp256k1 curve points and preventing nonce collisions (`src/core/crypto/SchnorrThresholdAggregator.ts`).
+- **BFT Consensus View-Change Quorum Verification**: Byzantine Fault Tolerant consensus engine verifying proposal sequence numbers, parent hashes, and certified view-change quorums across nomadic edge nodes (`src/core/consensus/BFTConsensusCoordinator.ts`).
+- **Snapshot-Consistent Partition Exports**: Verifiable snapshot manifests for consistent distributed partition exports (`src/lib/export/`).
+- **Crash-Safe IndexedDB Schema Migration Protocol**: Cross-tab and Service Worker safe IndexedDB schema migration coordinator preventing storage corruption across concurrent tabs.
+- **Reputation-Weighted Amenity Consensus & Vote Settlement**: Reputation-weighted community amenity verification and consensus settlement for venue attributes.
+- **Viewport-Bounded Heatmap Tiling**: Zoom-aware spatial heatmap tile aggregation for dense urban venue discovery.
+- **Server-Verifiable Check-In Attestations**: Cryptographic server-verifiable venue check-in attestations replacing client-side signatures.
+- **Workspace Ergonomics, Power Access & Acoustic Comfort Scoring**: Comprehensive venue scoring across power outlet density, seating ergonomics, and acoustic comfort.
+- **WebRTC Media Track Controller & Screen-Share Fallback**: Adaptive WebRTC media track controller with resilient screen-share fallback switching.
+- **Opening Hours Status Pill & Keyboard Search Shortcut**: Real-time venue open/closing countdown indicator paired with skip-to-content navigation and `⌘K`/`Ctrl+K` global search shortcut badge (`src/components/search/VenueSearchInput.tsx`).
+- **Offline Venue Search Indexer**: Client-side normalized offline venue search index for instant zero-connectivity discovery (`src/lib/search/offlineVenueSearchIndex.ts`).
+- **ZKP Verification Receipt Cache**: TTL-based zero-knowledge proof receipt cache with nullifier replay guard (`src/features/zkp/proofReceiptGuard.ts`).
+- **WebRTC Screen-Share Audio Toggle & Controller**: Dedicated screen-share audio capture toggle and controller for collaborative sessions (`src/components/realtime/ScreenShareAudioToggle.tsx`, `src/lib/realtime/screenShareAudioController.ts`).
+- **Venue Opening Hours Status Pill & Reactive Offline Drafts Badge**: Real-time opening status pill (`src/components/venues/VenueHoursBadge.tsx`) and reactive navbar badge for pending offline booking drafts (`src/components/layout/Navbar.tsx`).
+- **Zoom-Aware Spatial Venue Clustering & Tile Loader**: Viewport-bounded zoom-aware spatial clustering (`src/lib/geospatial/spatialVenueClusterer.ts`) and abort-safe map tile loader (`src/lib/maps/mapTileLoader.ts`).
+- **RLN Epoch Quota Guard & Secret Recovery Slasher**: Zero-knowledge Rate-Limiting Nullifier (RLN) epoch quota enforcement and cryptographic secret recovery slashing (`src/features/zkp/rlnSlasherGuard.ts`).
+- **Min-Cost Max-Flow Desk Auto-Allocator**: Optimal multi-constraint desk allocation solver balancing proximity, power access, and quietness (`src/core/ai/DeskAutoAllocator.ts`).
+- **Whiteboard Snapshot & Delta Authorization**: Role- and membership-scoped authorization enforcement on collaborative whiteboard snapshot and delta mutations (`src/lib/whiteboard/whiteboardAuthorization.ts`).
+- **O(1) Hashed Timing-Wheel Lease Scheduler & HLC Causal Ordering**: Constant-time hashed timing-wheel scheduler for seat lease expirations paired with Hybrid Logical Clock causal ordering for real-time state.
+- **Ambient Acoustic Notch Filter & ZKP Witness Progress UI**: Targeted frequency notch filtering for ambient audio and real-time Web Worker progress feedback during student discount proof generation (`src/components/student/StudentDiscountVerification.tsx`).
+- **Zero-Downtime RLN Epoch Key Rotation & Double-Spend Verification**: Seamless RLN epoch key rotation across active windows with cryptographic double-spend slashing proof verification (`src/features/zkp/rlnSlasherGuard.ts`).
+- **Solana Cluster RPC Pool Failover & Priority Fee Estimation**: Automatic multi-endpoint RPC failover pooling and dynamic priority fee estimation for Solana escrow settlements (`src/lib/solana/clusterRpcPool.ts`, `src/lib/solana/escrowClient.ts`).
+- **Authentication Middleware Pipeline & Token Bucket Fallback Telemetry**: Hardened auth/CSRF/security-header middleware pipeline paired with degraded-mode rate-limiter fallback metrics (`src/lib/ratelimit/tokenBucketFallback.ts`).
+- **Mesh Latency Ping Overlay & Ambient Peak Noise Alerts**: Live P2P mesh latency ping visualizer (`src/components/p2p/PeerTopologyVisualizer.tsx`) and ambient decibel peak alert toasts (`src/components/audio/SoundLevelMeter.tsx`).
+- **Whiteboard Guest Preview Mode & ZKP Animated Progress Ring**: Role-based read-only guest preview mode for collaborative whiteboards and an optional SVG progress ring in ZKP witness generation (`src/components/student/StudentDiscountVerification.tsx`).
+- **Admin Redis Ping Latency & HMR Singleton Guard**: Real-time Redis ping latency telemetry in admin diagnostics paired with HMR-safe Redis singleton initialization (`src/lib/redis.ts`).
+- **Batch Check-In Attestation Verification**: Server-side batch check-in cryptographic attestation verification for multi-seat venue check-ins.
+- **Streaming Student ZKP Batch Verification**: NDJSON per-item progress streaming in `/api/student/verify-batch` for real-time batch verification feedback.
+- **Monotonic Seat Hold Fence Tokens & Ambient Noise Threshold Badge**: Monotonic fence token validation for seat hold lock extensions (`src/lib/locks/seatHoldLock.ts`) and decibel threshold alert badges in ambient noise sparklines.
+- **NomadDeskPass QR PNG Export & SSRF Webhook Docs**: High-resolution `qrcode.react` + `html-to-image` passcard export (`src/components/bookings/NomadDeskPass.tsx`) and hardened webhook SSRF redirect revalidation docs.
+- **HMAC-SHA256 NFC Check-In & Per-Gateway Credential Rotation**: Replay-safe NFC tap verification replacing weak hashes (`#10704`) paired with scoped gateway credential enrollment and zero-downtime key rotation (`src/lib/telemetry/gatewayAuthRegistry.ts`).
+- **Bounded Multi-Agent Tool Loop & Live Folder ACL Revocation**: Schema-validated bounded tool execution in `MultiAgentOrchestrator` and instant PartyKit folder ACL revocation (`src/lib/realtime/folderAclLease.ts`).
+- **Scope 2 Emissions Ledger & DTN Bundle Recovery**: Auditable venue electricity consumption and Scope 2 carbon ledger (`src/lib/sustainability/scope2Ledger.ts`) alongside durable DTN bundle ingestion and fragment recovery (`src/app/api/network/dtn/route.ts`).
+- **Replayable SSE Availability & Recurring Reservation Series**: Multi-instance replayable SSE seat availability streaming (`src/lib/reservations/replayableStream.ts`) and atomic database-backed recurring reservation series (`src/app/api/seats/recurring-availability/route.ts`).
+- **Svix Webhook Inbox Deduplication & Canonical Sensor Identity**: Tombstone-ordered Svix webhook inbox deduplication (`src/app/api/webhooks/clerk/route.ts`) and canonical per-device telemetry event ordering (`src/lib/telemetry/canonicalEventIdentity.ts`).
+- **WebGPU Capability Diagnostics & JSON Export**: Interactive WebGPU adapter/limit diagnostics panel with one-click JSON export (`src/components/admin/WebGpuCapabilityPanel.tsx`, `src/lib/webgpu/capabilityReport.ts`).
+- **Scope 2 RFC 4180 CSV Exporter & Recurring Series Dry-Run Preview**: Formula-safe CSV export for venue emissions (`src/lib/sustainability/scope2Ledger.ts`) and non-mutating conflict dry-run previews for recurring reservations (`src/app/api/seats/recurring-availability/route.ts`).
+- **Folder ACL Expiry Warnings & Replayable SSE Heartbeats**: 30-second `lease_expiring` warning events (`src/lib/realtime/folderAclLease.ts`) and proxy keepalive heartbeat frames on replayable SSE streams (`src/lib/reservations/replayableStream.ts`).
+- **DTN Priority Queue Fragment Ingestion & RPC Failover Guard**: Priority-ordered DTN bundle ingestion (`src/core/network/DTNBundlesInbox.ts`) paired with unhandled-rejection guards on multi-endpoint Solana RPC failover (`src/lib/solana/rpcClusterPool.ts`).
+- **Multi-Agent Tool Latency Metrics & Gateway Last-Used Tracking**: Per-step tool latency reporting in `MultiAgentOrchestrator` and non-blocking `lastUsedAt` auditing in `gatewayAuthRegistry`.
+- **Monotonic Mesh Key-Epoch Rotation & Dual-Epoch Overlap**: Forward-secure `keyEpoch` frame headers with dual-epoch decryption overlap for zero-drop mesh key rotation (`src/lib/realtime/meshKeyEpochFrames.ts`).
+- **Bounded Solana RPC Latency Window & DTN Digest Verification**: Sliding-window per-endpoint latency tracking in `rpcClusterPool` and SHA-256 payload integrity checks in `DTNBundlesInbox`.
+- **Multi-Agent Cumulative Tool Budget Guard & ACL Lease Renewal**: `maxTotalToolDurationMs` execution budget enforcement (`src/lib/agents/MultiAgentOrchestrator.ts`) and permission-verified folder ACL lease renewals (`src/lib/realtime/folderAclLease.ts`).
+- **Stale Gateway Auditing & BookingDatePicker Today Shortcut**: Idle credential pruning via `listStaleCredentials` (`src/lib/telemetry/gatewayAuthRegistry.ts`) and DST-safe `T` today-jump shortcut (`src/components/bookings/BookingDatePicker.tsx`).
 
 - **Client-Side Core Web Vitals Reporter**: Real-time performance telemetry tracking CLS, INP, LCP, FCP, and TTFB directly reporting to `/api/telemetry/vitals` with configurable sampling rates and privacy consent guards (`src/lib/telemetry/webVitalsReporter.ts`, `src/components/analytics/WebVitalsReporter.tsx`).
 - **WebRTC TURN Relay Dynamic Bandwidth Throttling**: Automatic throughput regulation and dynamic relay bandwidth throttling across peer-to-peer data channels to mitigate packet loss on constrained mobile uplinks (`src/lib/realtime/webrtc/meshConnection.ts`).
