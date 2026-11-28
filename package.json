@@ -26,7 +26,8 @@
     "bench:bloom-limiter": "node --experimental-strip-types scripts/bench-distributed-bloom-limiter.mjs",
     "postinstall": "prisma generate",
     "prepare": "husky",
-    "zkp:compile:student-access-pass": "bash scripts/compile-student-access-pass-zkp.sh"
+    "zkp:compile:student-access-pass": "bash scripts/compile-student-access-pass-zkp.sh",
+    "check:release-version": "node scripts/check-release-version.mjs"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.9.3",
